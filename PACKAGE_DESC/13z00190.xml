@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="packagedesc.xsd">
+	<name>13z00190</name>
+	<description>Linux driver package for MEN 16Z001 SMB Controller</description>
+	<date>2014-07-29</date>
+	<revision>1.9</revision>
+    <docroot>DRIVERS/SMB_Z001/DOC/html/index.html</docroot>
+	<modellist>
+		<model>
+			<hwname>16Z001_SMB</hwname>
+			<description>I2C/SMBus Controller in Chameleon FPGA</description>
+			<devnameprefix>SMB</devnameprefix>
+			<devtype>NATIVE</devtype>
+			<busif>ChameleonBus</busif>
+            <autoid>
+                <chamunitid>0x1b</chamunitid>
+            </autoid>
+			<settinglist>
+				<debugsetting desc="false" drv="false" mk="false" oss="false"/>
+			</settinglist>
+			<swmodulelist>
+				<swmodule>
+					<name>smb_z001</name>
+					<description>Linux SMBus driver for 16Z001</description>
+					<type>Native Driver</type>
+					<makefilepath>DRIVERS/Z001_SMB/driver.mak</makefilepath>
+                    <os>Linux</os>
+				</swmodule>
+			</swmodulelist>
+		</model>
+	</modellist>
+</package>
