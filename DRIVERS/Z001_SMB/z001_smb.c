@@ -69,6 +69,7 @@
 #include <linux/sched.h>
 #include <linux/version.h>
 #include <linux/init.h>
+#include <linux/slab.h>
 #include <linux/i2c.h>
 
 #include <MEN/men_chameleon.h>
