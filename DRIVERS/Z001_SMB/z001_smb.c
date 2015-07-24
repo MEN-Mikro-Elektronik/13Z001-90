@@ -642,9 +642,7 @@ static CHAMELEON_DRIVER_T G_driver = {
  */
 static int __init z001_smb_init(void)
 {
-	printk(	KERN_INFO "MEN SMB controller driver for IP core 16Z001_SMB." \
-			"\nBuilt: %s %s  (c) MEN Mikro Elektronik GmbH\n",
-			__DATE__, __TIME__);
+	printk(	KERN_INFO "MEN SMB controller driver for IP core 16Z001_SMB\n" );
 
     /* init linux lists and locking */
     INIT_LIST_HEAD( &G_z001ListHead );

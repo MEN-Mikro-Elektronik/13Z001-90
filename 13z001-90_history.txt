@@ -1,5 +1,6 @@
-===== [ History of fileset ART/13Z001-90/13Z001-90 ] =====
 
+
+--------- start of git respository based driver maintenance ------------
 
 -----[ Revision 1.9 ]-----
 [ 2014-07-29 10:52:09 by ts ]
@@ -66,4 +67,13 @@ bugfix in fileset (target dir)
 -----[ Revision 1.1 ]-----
 [ 2005-05-25 15:20:27 by cs ]
 Initial Revision
+
+===== [ History of fileset ART/13Z001-90/13Z001-90 ] =====
+
+
+-----[ Revision 1.9 ]-----
+[ 2014-07-29 10:52:09 by ts ]
+z001_smb.c
+R: compile with gcc 4.8 on kernel 3.14 throwed several warnings
+M: corrected typecasts and data types to 64bit save ones (unsigned long etc.)
 
