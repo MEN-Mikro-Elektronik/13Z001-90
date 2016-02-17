@@ -429,7 +429,6 @@ exit:
 }
 
 
-
 /****************************************************************************/
 /** Retrieve this Adapters supported functions
  *
@@ -439,9 +438,12 @@ exit:
  */
 static u32 z001_func(struct i2c_adapter *adapter)
 {
-	return I2C_FUNC_SMBUS_QUICK | I2C_FUNC_SMBUS_BYTE | 
-	  I2C_FUNC_SMBUS_BYTE_DATA | I2C_FUNC_SMBUS_WORD_DATA ;
+	/* return I2C_FUNC_SMBUS_QUICK | I2C_FUNC_SMBUS_BYTE | I2C_FUNC_SMBUS_BYTE_DATA | I2C_FUNC_SMBUS_WORD_DATA ; */
+
+	return (I2C_FUNC_SMBUS_QUICK | I2C_FUNC_SMBUS_BYTE | I2C_FUNC_SMBUS_BYTE_DATA | I2C_FUNC_SMBUS_WORD_DATA |
+		I2C_FUNC_SMBUS_BLOCK_DATA | I2C_FUNC_SMBUS_WRITE_I2C_BLOCK | I2C_FUNC_SMBUS_READ_I2C_BLOCK);
 }
+
 
 /****************************************************************************/
 /** SMBuss access algorithm function struce
