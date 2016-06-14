@@ -77,9 +77,10 @@
 #include <MEN/maccess.h>
 #include <MEN/16z001_smb.h>
 
-#undef DBG
-#ifdef DBG
-#define DBGOUT(x...) printk(KERN_DEBUG x)
+/* set to define if debugprints desired  */
+#define Z001DBG
+#ifdef Z001DBG
+#define DBGOUT(x...) printk(KERN_CRIT x)
 #else
 #define DBGOUT(x...)
 #endif /* DBG */
@@ -107,9 +108,8 @@ typedef struct {
     struct list_head 	node;		/* linked list maintenance 	*/
 	unsigned long 	physBase;	/* from chu->base 			*/
         unsigned long   ioBase;	        /* ioremapped virt Base for MWRITE/MREAD */
-	struct i2c_adapter 	z001_adap;
+	struct i2c_adapter 	adapter;
 } Z001_DRVDATA_T;
-
 
 
 /*-----------------------------------------+
@@ -470,7 +470,7 @@ static Z001_DRVDATA_T *getDriverData(struct i2c_adapter *adap )
     Z001_DRVDATA_T		*ent 	= NULL;
     list_for_each( pos, &G_z001ListHead ) {
 		ent = list_entry( pos, Z001_DRVDATA_T, node );
-		if (&ent->z001_adap == adap)
+		if (&ent->adapter == adap)
 			return(ent);
     }
     printk( KERN_ERR "*** i2c_adapter 0x%08x not found!\n", adap );
@@ -506,6 +506,7 @@ static int z001_probe( CHAMELEON_UNIT_T *chu )
 	  |alloc driver data memory|
 	  +------------------------*/
 
+
 	drvData = kmalloc( sizeof(Z001_DRVDATA_T), GFP_KERNEL );
 	memset(drvData, 0x00, sizeof(Z001_DRVDATA_T));
 	if( !drvData ){
@@ -514,28 +515,29 @@ static int z001_probe( CHAMELEON_UNIT_T *chu )
 	}
 
 	/* populate i2c_adapter member, the structs members differ in 2.4/2.6 */
-	drvData->z001_adap.owner = THIS_MODULE;
-	drvData->z001_adap.class = I2C_CLASS_HWMON;
-	drvData->z001_adap.algo  = &smbus_algorithm;
-
+	drvData->adapter.owner      = THIS_MODULE;
+	drvData->adapter.class      = I2C_CLASS_HWMON;
+	drvData->adapter.algo       = &smbus_algorithm;
+	drvData->adapter.dev.parent = &chu->pdev->dev;
 
 	if (chu != NULL ) {		
-		sprintf( drvData->z001_adap.name, "16Z001-%d BAR%d offs 0x%x", chu->instance, chu->bar, chu->offset);
-#ifdef CONFIG_PCI
-		drvData->physBase = (unsigned long)(pci_resource_start(chu->pdev,chu->bar) + chu->offset);
-#else
-		drvData->physBase = chu->offset;
-#endif		
-		drvData->ioBase = (unsigned long)ioremap_nocache((unsigned long)drvData->physBase, 0x100);
 
-		DBGOUT("z001_probe: remapped 0x%08x to 0x%08x\n", drvData->physBase, drvData->ioBase );		
+	  sprintf( drvData->adapter.name, "16Z001-%d BAR%d offs 0x%x", chu->instance, chu->bar, chu->offset);
+#ifdef CONFIG_PCI
+	  drvData->physBase = (unsigned long)(pci_resource_start(chu->pdev,chu->bar) + chu->offset);
+#else
+	  drvData->physBase = chu->offset;
+#endif		
+	  drvData->ioBase = (unsigned long)ioremap_nocache((unsigned long)drvData->physBase, 0x100);
+		
+	  DBGOUT("z001_probe: remapped 0x%08x to 0x%08x\n", drvData->physBase, drvData->ioBase );		
 
 	} else {
 
 	  drvData->physBase = isa_addr;
-		drvData->ioBase = drvData->physBase;
-		sprintf( drvData->z001_adap.name, "16Z001-%d-0x%x", G_instance++, drvData->ioBase );
-		DBGOUT("z001_probe: using ISA address 0x%08x\n", drvData->ioBase );
+	  drvData->ioBase = drvData->physBase;
+	  sprintf( drvData->adapter.name, "16Z001-%d-0x%x", G_instance++, drvData->ioBase );
+	  DBGOUT("z001_probe: using ISA address 0x%08x\n", drvData->ioBase );
 	}
 
     list_add(&drvData->node, &G_z001ListHead);
@@ -577,7 +579,7 @@ static int z001_probe( CHAMELEON_UNIT_T *chu )
 	MWRITE_D8( drvData->ioBase, Z001_SMB_HSI, Z001_SMB_HSI_HCIE );  
 
 	/* Here actually adding the adapter happens */
-	if ( (res = i2c_add_adapter(&drvData->z001_adap)) ) {
+	if ( (res = i2c_add_adapter(&drvData->adapter)) ) {
 		printk(KERN_ERR "i2c-men16z001: Adapter reg. failed, module not inserted.\n");
 		return res;
 	}
@@ -611,7 +613,7 @@ static int z001_remove( CHAMELEON_UNIT_T *chu )
 		drvData = G_z001drvDataP;
 
 	/* remove adapter from kernel */
-	i2c_del_adapter( &drvData->z001_adap );
+	i2c_del_adapter( &drvData->adapter );
 
 
 	/* unmap ioremap'ed area */
@@ -631,7 +633,7 @@ static int z001_remove( CHAMELEON_UNIT_T *chu )
 
 static CHAMELEON_DRIVER_T G_driver = {
 	.name		=		"z001_smb",
-	.modCodeArr = 		G_modCodeArr,
+	.modCodeArr     = 		G_modCodeArr,
 	.probe		=		z001_probe,
 	.remove		= 		z001_remove
 };
@@ -649,11 +651,11 @@ static int __init z001_smb_init(void)
     /* init linux lists and locking */
     INIT_LIST_HEAD( &G_z001ListHead );
 #ifndef MAC_IO_MAPPED
-	men_chameleon_register_driver( &G_driver );
+    men_chameleon_register_driver( &G_driver );
 #else
-	z001_probe(NULL);
+    z001_probe(NULL);
 #endif
-	return 0;
+    return 0;
 }
 
 
