@@ -78,7 +78,8 @@
 #include <MEN/16z001_smb.h>
 
 /* set to define if debugprints desired  */
-#define Z001DBG
+#undef Z001DBG
+
 #ifdef Z001DBG
 #define DBGOUT(x...) printk(KERN_CRIT x)
 #else
