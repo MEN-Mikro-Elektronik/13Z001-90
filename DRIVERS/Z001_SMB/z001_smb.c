@@ -493,7 +493,7 @@ static Z001_DRVDATA_T *getDriverData(struct i2c_adapter *adap )
 static int z001_probe( CHAMELEON_UNIT_T *chu )
 {
 	int res;
-	Z001_DRVDATA_T  *drvData;
+	Z001_DRVDATA_T  *drvData = NULL;
 	unsigned char regVal = 0;
 
 	if (chu != NULL ) {
@@ -519,7 +519,12 @@ static int z001_probe( CHAMELEON_UNIT_T *chu )
 	drvData->adapter.owner      = THIS_MODULE;
 	drvData->adapter.class      = I2C_CLASS_HWMON;
 	drvData->adapter.algo       = &smbus_algorithm;
-	drvData->adapter.dev.parent = &chu->pdev->dev;
+	if (chu != NULL ) {
+		drvData->adapter.dev.parent = &chu->pdev->dev;
+	}
+	else {
+		drvData->adapter.dev.parent = NULL;
+	}
 
 	if (chu != NULL ) {		
 
