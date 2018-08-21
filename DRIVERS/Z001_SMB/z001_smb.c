@@ -129,8 +129,10 @@ static void men16z001_pause( unsigned int amount );
 |  GLOBALS							       |
 +-----------------------------------------*/
 
+#ifndef MAC_IO_MAPPED
 static u16 G_modCodeArr[] = {	CHAMELEON_16Z001_SMB, 
 								CHAMELEON_MODCODE_END };
+#endif
 
 static struct list_head	G_z001ListHead;
 
@@ -637,12 +639,14 @@ static int z001_remove( CHAMELEON_UNIT_T *chu )
 }
 
 
+#ifndef MAC_IO_MAPPED
 static CHAMELEON_DRIVER_T G_driver = {
 	.name		=		"z001_smb",
 	.modCodeArr     = 		G_modCodeArr,
 	.probe		=		z001_probe,
 	.remove		= 		z001_remove
 };
+#endif
 
 
 
