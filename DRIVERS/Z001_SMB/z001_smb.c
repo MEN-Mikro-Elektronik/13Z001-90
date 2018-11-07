@@ -10,55 +10,7 @@
  *				 core subsystem
  *
  */
-/*-------------------------------[ History ]---------------------------------
- *
- * $Log: z001_smb.c,v $
- * Revision 1.11  2014/07/16 18:37:15  ts
- * R: compile with gcc 4.8 on kernel 3.14 throwed several warnings
- * M: corrected typecasts and data types to 64bit save ones (unsigned long etc.)
- *
- * Revision 1.10  2013/11/08 09:55:18  ts
- * R: unnecessary define SMB_CLK_SPEC occured in file
- * M: removed define
- *
- * Revision 1.9  2013/11/07 15:52:26  ts
- * R: 1. physical address wasnt assigned on F11C
- *    2. setting one of the SMB clock frequencies is not possible directly
- * M: 1. insert correct ioremap when probed through chameleon driver
- *    2. removed parameters smbClkMin, smbClkMax, cpuClk. Set HCBC clk value
- *       direktly from passed module parameter smbClk
- *
- * Revision 1.8  2013/09/25 16:23:11  ts
- * R: 1. in G2X the Z001 is IO mapped not within a PCI BAR but in ISA space
- *    2. on G22 the rear Z001 showed ghost devices when probing with i2cdetect
- * M: 1. support IO mapped build with parameter to pass the ISA address
- *    2. bugfix: after a quick command dont return immediately but check status
- *
- * Revision 1.7  2012/10/29 18:30:01  ts
- * R: driver caused error messages when in fact just no I2C device reachable
- * M: commented out unnecessary error messages
- *
- * Revision 1.6  2008/06/27 12:53:02  aw
- * R: uninitialised structure drvData was used
- * M: set structure drvData to 0
- *
- * Revision 1.5  2008/04/22 13:19:01  aw
- * + error request
- * + smb speed calculation
- *
- * Revision 1.4  2007/03/27 19:06:45  ts
- * removed unnecessary includes
- *
- * Revision 1.3  2007/03/06 10:46:33  ts
- * more thorough description in i2c_adapter.name[]
- *
- * Revision 1.2  2007/03/05 16:15:37  ts
- * take includes from 16z001_smb.h
- *
- * Revision 1.1  2007/03/05 13:33:57  ts
- * Initial Revision
- *
- *
+/*
  *---------------------------------------------------------------------------
  * (c) Copyright 2007 by MEN mikro elektronik GmbH, Nuremberg, Germany
  ****************************************************************************/

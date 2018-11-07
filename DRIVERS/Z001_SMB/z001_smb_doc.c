@@ -12,26 +12,7 @@
  *
  *     \switches -
  */
-/*-------------------------------[ History ]--------------------------------
- *
- * $Log: z001_smb_doc.c,v $
- * Revision 1.5  2013/11/08 09:52:30  ts
- * R: usage of module parameters was not clearly described
- * M: added chapter about modprobing the driver with smbClk values
- *
- * Revision 1.4  2013/09/25 16:28:28  ts
- * R: added i2cdetect -l dump
- *
- * Revision 1.3  2013/09/25 16:24:28  ts
- * R: new CPU G22 is supported
- * M: added chapter about loading driver and probing an EEPROM on G22
- *
- * Revision 1.2  2007/03/27 20:08:19  ts
- * Initial Revision
- *
- * Revision 1.1  2005/05/25 15:20:05  cs
- * Initial Revision
- *
+/*
  *---------------------------------------------------------------------------
  * (c) Copyright 2013 by MEN Mikro Elektronik GmbH, Nuremberg, Germany
  ****************************************************************************/

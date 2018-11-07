@@ -10,25 +10,7 @@
  *       \brief  internal declarations 
  *                
  */
-/*-------------------------------[ History ]---------------------------------
- *
- * $Log: z001_smb.h,v $
- * Revision 1.4  2013/11/08 09:53:29  ts
- * R: Cosmetics, version number was confusing
- * M: removed last 2 initial revisions
- *
- * Revision 1.3  2005/05/25 15:19:59  cs
- * added detailed register documentation
- * cosmetics in documentation
- *
- * Revision 1.2  2005/05/24 11:59:37  cs
- * added menuconfig configuration
- * changed PCI_VENDOR_ID_CHAMELEON and PCI_DEVICE_ID_CHAMELEON to match common chameleon IDs
- *
- * Revision 1.1  2005/05/20 11:22:18  ts
- * Initial Revision
- *
- *
+/*
  *---------------------------------------------------------------------------
  * (c) Copyright 2005 by MEN Mikro Elektronik GmbH, Nuremberg, Germany
  ****************************************************************************/
