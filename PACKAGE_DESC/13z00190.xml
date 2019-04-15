@@ -4,7 +4,7 @@
 	<description>Linux driver package for MEN 16Z001 SMB Controller</description>
 	<date>2015-07-24</date>
 	<revision>1.10</revision>
-    <docroot>DRIVERS/SMB_Z001/DOC/html/index.html</docroot>
+    <docroot>DRIVERS/Z001_SMB/DOC/html/index.html</docroot>
 	<modellist>
 		<model>
 			<hwname>16Z001_SMB</hwname>
