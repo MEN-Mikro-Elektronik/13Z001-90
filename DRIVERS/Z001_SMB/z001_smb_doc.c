@@ -236,6 +236,6 @@
 
 */
 
-/** \page dummy
+/** \page z001dummy MEN logo
 	\menimages
 */
