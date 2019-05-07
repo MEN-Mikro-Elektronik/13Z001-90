@@ -1,0 +1,18 @@
+@INCLUDE_PATH = $(MEN_DOXYGENTMPL)
+@INCLUDE = DoxyfileCommon
+
+PROJECT_NAME           = "MEN 16Z001 host driver for Linux"
+INPUT                  = ../
+
+EXAMPLE_RECURSIVE      = NO
+EXAMPLE_PATH           =
+OUTPUT_DIRECTORY       = .
+EXTRACT_ALL            = NO
+EXTRACT_STATIC         = YES
+GENERATE_HTMLHELP      = YES
+WARNINGS               = YES
+WARN_IF_DOC_ERROR      = YES
+WARN_IF_UNDOCUMENTED   = YES
+GENERATE_HTMLHELP      = YES
+TAGFILES               = 
+GENERATE_TAGFILE       = i2c-men16z001_linux_driver.tag
