@@ -285,6 +285,9 @@ static s32 z001_access(struct i2c_adapter *adap,
 		/* SMB address of the device */
 		MWRITE_D8(ioaddr, Z001_SMB_ADDR, ADDSHIFT(addr) | (read_write & 1));
 
+		/* The command is: read/write block */
+		MWRITE_D8(ioaddr, Z001_SMB_CMD, Z001_SMB_CMD_BLOCK_DATA);
+
 		/* Actual address we want to make the block transfer to & from */
 		MWRITE_D8(ioaddr, Z001_SMB_HSTCOM, command);
 
