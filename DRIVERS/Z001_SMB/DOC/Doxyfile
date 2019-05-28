@@ -1,7 +1,7 @@
 @INCLUDE_PATH = $(MEN_DOXYGENTMPL)
 @INCLUDE = DoxyfileCommon
 
-#MDIS_COMMIT=
+#MDIS_COMMIT=9143a9c8d4c022d40028ddd9390a52fd257d6917
 
 PROJECT_NAME           = "MEN 16Z001 host driver for Linux"
 INPUT                  = ../
