@@ -1,8 +1,6 @@
 #**************************  M a k e f i l e ********************************
 #  
 #         Author: ts
-#          $Date: 2013/09/25 16:18:46 $
-#      $Revision: 1.1 $
 #  
 #    Description: Makefile descriptor for Z001 SMBus Controller Module,
 #                 IO mapped (ISA/G22)
@@ -23,6 +21,11 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 MAK_NAME=lx_z001_io
+# the next line is updated during the MDIS installation
+STAMPED_REVISION="13Z001-90_01_14-10-g433d92c-dirty_2019-05-30"
+
+DEF_REVISION=MAK_REVISION=$(STAMPED_REVISION)
+MAK_SWITCH=$(SW_PREFIX)$(DEF_REVISION)
 
 MAK_LIBS=
 

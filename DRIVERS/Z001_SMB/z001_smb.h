@@ -4,8 +4,6 @@
  *      \project 16Z001 I2C Host driver for Linux
  *
  *       \author ts
- *        $Date: 2013/11/08 09:53:29 $
- *    $Revision: 1.4 $
  *
  *       \brief  internal declarations 
  *                

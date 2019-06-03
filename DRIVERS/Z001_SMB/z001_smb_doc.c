@@ -3,8 +3,6 @@
  *        \file  z001_smb_doc.c
  *
  *      \author  Christian.Schuster@men.de
- *        $Date: 2013/11/08 09:52:30 $
- *    $Revision: 1.5 $
  *
  *      \brief   User documentation for MEN 16Z001 I2C host driver for Linux
  *

@@ -1,8 +1,6 @@
 #**************************  M a k e f i l e ********************************
 #  
 #         Author: ts
-#          $Date: 2007/03/27 20:05:43 $
-#      $Revision: 1.1 $
 #  
 #    Description: makefile descriptor for Z001 SMBus Controller Module,
 #                 byteswapped access
@@ -23,10 +21,15 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 MAK_NAME=lx_z001_sw
+# the next line is updated during the MDIS installation
+STAMPED_REVISION="13Z001-90_01_14-10-g433d92c-dirty_2019-05-30"
+
+DEF_REVISION=MAK_REVISION=$(STAMPED_REVISION)
 
 MAK_LIBS=
 
 MAK_SWITCH=$(SW_PREFIX)MAC_MEM_MAPPED \
+		$(SW_PREFIX)$(DEF_REVISION) \
 		   $(SW_PREFIX)MAC_BYTESWAP   \
 		   $(SW_PREFIX)EXPORT_SYMTAB
 

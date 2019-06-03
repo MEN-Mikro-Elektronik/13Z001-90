@@ -3,8 +3,6 @@
  *        \file  z001_smb.c
  *
  *      \author  ts
- *        $Date: 2014/07/16 18:37:15 $
- *    $Revision: 1.11 $
  *
  *        \brief Register a Z001 SMB Controller unit at the i2c 
  *				 core subsystem
