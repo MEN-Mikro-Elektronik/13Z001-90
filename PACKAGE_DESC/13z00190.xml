@@ -2,8 +2,8 @@
 <package xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="packagedesc.xsd">
 	<name>13z00190</name>
 	<description>Linux driver package for MEN 16Z001 SMB Controller</description>
-	<date>2015-07-24</date>
-	<revision>1.10</revision>
+	<date>2019-06-07</date>
+	<revision>13Z001-90_01_14-12-g1a7878e</revision>
 	<docroot>DRIVERS/Z001_SMB/DOC/html/index.html</docroot>
 	<modellist>
 		<model>
