@@ -654,6 +654,7 @@ static void __exit z001_smb_exit(void)
 MODULE_AUTHOR ("thomas.schnuerer@men.de");
 MODULE_DESCRIPTION("MEN 16Z001 SMBus driver");
 MODULE_LICENSE("GPL");
+MODULE_VERSION(MENT_XSTR(MAK_REVISION));
 
 module_init(z001_smb_init);
 module_exit(z001_smb_exit);
