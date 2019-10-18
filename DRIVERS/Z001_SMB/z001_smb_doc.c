@@ -61,7 +61,6 @@
   z001_smb.h				Header file for driver\n
   driver.mak				Makefile part for building Driver as Part of MDIS
   z001_smb_doc.c			Source for software documentation
-  system.dsc				MDIS demo system descriptor for using F210
   Makefile				MDIS demo Makefile 
 
   \section build_install Build/Install
