@@ -5,7 +5,7 @@
 #    Description: makefile descriptor for Z001 SMBus Controller Module,
 #                 byteswapped access
 #-----------------------------------------------------------------------------
-#   Copyright (c) 2007-2019, MEN Mikro Elektronik GmbH
+#   Copyright 2007-2019, MEN Mikro Elektronik GmbH
 #*****************************************************************************
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by

@@ -5,7 +5,7 @@
 #    Description: Makefile descriptor for Z001 SMBus Controller Module,
 #                 IO mapped (ISA/G22)
 #-----------------------------------------------------------------------------
-#   Copyright (c) 2013-2019, MEN Mikro Elektronik GmbH
+#   Copyright 2013-2019, MEN Mikro Elektronik GmbH
 #*****************************************************************************
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
