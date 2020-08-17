@@ -503,7 +503,11 @@ static int z001_probe( CHAMELEON_UNIT_T *chu )
 #else
 	  drvData->physBase = chu->offset;
 #endif		
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,5,0)
+	  drvData->ioBase = (unsigned long)ioremap((unsigned long)drvData->physBase, 0x100);
+#else
 	  drvData->ioBase = (unsigned long)ioremap_nocache((unsigned long)drvData->physBase, 0x100);
+#endif
 		
 	  DBGOUT("z001_probe: remapped 0x%08x to 0x%08x\n", drvData->physBase, drvData->ioBase );		
 
