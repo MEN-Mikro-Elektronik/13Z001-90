@@ -127,7 +127,11 @@ static int G_instance=0;
  */
 static void men16z001_pause( unsigned int amount )
 {
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,14,0)
+	WRITE_ONCE(current->__state, TASK_INTERRUPTIBLE);
+#else
 	current->state = TASK_INTERRUPTIBLE;
+#endif
 	schedule_timeout(amount);
 }
 
